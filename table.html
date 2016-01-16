@@ -1,60 +1,5 @@
 <title>Leads</title>
-<script type="text/javascript" language="javascript" class="init">
-		$(document).ready(function() {
-			var t = $('#example').DataTable( {
-				"processing": true,
-				"serverSide": true,
-				"ajax": "server_processing.php",
-				"aoColumnDefs" : [
-				 {
-				   'bSortable' : false,
-				   'aTargets' : [ 1,2,3,5,7 ]
-				 }],
-				 "fnCreatedRow": function (row, data, index) {
-					$('td', row).eq(0).html(index + 1);
-				},
-				columns: [
-					{ data: null, render: function ( data, type, row ) {                
-							return '';
-						}
-					},
-					{ data: null, render: function ( data, type, row ) {                
-						return data[1];
-						}
-					},
-					{ data: null, render: function ( data, type, row ) {                
-						return data[2];
-						} 
-					},
-					{ data: null, render: function ( data, type, row ) {                
-						return data[3];
-						} 
-					},
-					{ data: null, render: function ( data, type, row ) {                
-						return data[4];
-						} 
-					},
-					{ data: null, render: function ( data, type, row ) {                
-						return data[5]  + '<select><option>A</option><option>B</option></select>';
-						} 
-					},					
-					{ data: null, render: function ( data, type, row ) {                
-						return data[6];
-						} 
-					},
-					{
-						data: null,
-						className: "center",
-						render: function ( data, type, row ) {                
-						return '<a href="" data-id="'+data[0]+'"  class="editor_edit">Edit</a> / <a href="" data-id="'+data[0]+'" class="editor_remove">Delete</a>';
-						} 
-						//defaultContent: '<a href="" data-id="'+data[5]+'"  class="editor_edit">Edit</a> / <a href="" class="editor_remove">Delete</a>'
-					}
-				]
-			});		
-		} );
 
-	</script>
 </head>
 
 <body class="dt-example dt-example-bootstrap">
@@ -91,6 +36,123 @@
 			</table>
 		</section>
 	</div>
+	<script type="text/javascript" language="javascript" class="init">
+	var t ;
+	$(document).ready(function() {
+			t = $('#example').DataTable( {
+				"processing": true,
+				"serverSide": true,
+				"ajax": "server_processing.php",
+				"aoColumnDefs" : [
+				 {
+				   'bSortable' : false,
+				   'aTargets' : [ 1,2,3,5,7 ]
+				 }],
+				 "fnCreatedRow": function (row, data, index) {
+					$('td', row).eq(0).html(index + 1);
+				},
+				columns: [
+					{ data: null, render: function ( data, type, row ) {                
+							return '';
+						}
+					},
+					{ data: null, render: function ( data, type, row ) {                
+						return data[1];
+						}
+					},
+					{ data: null, render: function ( data, type, row ) {                
+						return data[2];
+						} 
+					},
+					{ data: null, render: function ( data, type, row ) {                
+						return data[3];
+						} 
+					},
+					{ data: null, render: function ( data, type, row ) {                
+						return data[4];
+						} 
+					},
+					{ data: null, render: function ( data, type, row ) {
+						var status;
+						if(data[5] == '1'){
+							status = 'A';
+						}else if(data[5] == '2'){
+							status = 'B';
+						}else if(data[5] == '3'){
+							status = 'c';
+						}
+						return '<span class="cls_userstatus">'+status+'</span><span style="display:none" class="cls_userstatuslist"><select class="cls_status"><option value="1">A</option><option value="2">B</option><option value="3">c</option></select></span>';
+						} 
+					},					
+					{ data: null, render: function ( data, type, row ) {                
+						return data[6];
+						} 
+					},
+					{
+						data: null,
+						className: "center",
+						render: function ( data, type, row ) {                
+						return '<span class="cls_userinfoedit"><a href="javascript:void(0)" data-id="'+data[0]+'"  class="editor_edit">Edit</a>/ <a href="javascript:void(0)" data-id="'+data[0]+'" class="editor_remove">Delete</a> </span>'+
+						'<span class="cls_userinfoupdate" style="display:none"><a href="javascript:void(0)" data-id="'+data[0]+'"  class="editor_update">Update</a>/ <a href="javascript:void(0)" data-id="'+data[0]+'" class="editor_cancel">Cancel</a></span>';
+						} 
+						//defaultContent: '<a href="" data-id="'+data[5]+'"  class="editor_edit">Edit</a> / <a href="" class="editor_remove">Delete</a>'
+					}
+				]
+			});		
+		} );
+	
+		$(document).on('click','.editor_edit',function(){
+			$(this).closest('.cls_userinfoedit').toggle();	
+			$(this).closest('.cls_userinfoedit').next('.cls_userinfoupdate').toggle();
+			$(this).closest('tr').find('.cls_userstatuslist').toggle();
+			$(this).closest('tr').find('.cls_userstatus').toggle();
+		});
+		$(document).on('click','.editor_update',function(){
+			var obj = $(this);
+			var userid = $(this).data('id');			
+			$.ajax({
+			  url: "lead.php",
+			  data: {'id':'update','userid':userid,'status':obj.closest('tr').find('.cls_status').val()}
+			}).done(function(r) {
+				if(r.res) {
+						alert('status updated Successfully');						
+						t.ajax.reload( null, false );
+				} else {					
+					alert('Oops!! Some error occured.');
+				}	
+			});
+			});
+			$(document).on('click','.editor_remove',function(){
+				var obj = $(this);
+				var userid = $(this).data('id');
+				var rtn = confirm('Are you sure to delete this user??');
+				if(rtn){
+					$.ajax({
+					  url: "lead.php",
+					  data: {'id':'delete','userid':userid}
+					}).done(function(r) {
+						if(r.res) {
+								alert('User deleted Successfully');
+								t.ajax.reload( null, false );
+								
+						} else {							
+							alert('Oops!! Some error occured.');
+						}	
+					});	
+				}
+			});
+			
+			$(document).on('click','.editor_cancel',function(){
+				hideUpdate($(this));
+			});
+			function hideUpdate(obj){
+				obj.closest('.cls_userinfoupdate').toggle();	
+				obj.closest('.cls_userinfoupdate').prev('.cls_userinfoedit').toggle();
+				obj.closest('tr').find('.cls_userstatuslist').toggle();
+				obj.closest('tr').find('.cls_userstatus').toggle();
+			}
+	</script>
+	
 	
 </body>
 </html>

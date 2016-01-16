@@ -2,7 +2,7 @@
 include_once("db_connection.php");
 
 class newuser{
-var $id,$email,$name,$mobile,$city;
+var $id,$email,$name,$mobile,$city,$status;
 
 	/* for checking if student exists or not */
 	function checkifexist(){
@@ -30,6 +30,20 @@ var $id,$email,$name,$mobile,$city;
 		$_SESSION["email"]=$this->email;
 		/*header("Location: ".$GLOBALS['url']."userDetail.php?PHPSESSID=".session_id()); /* Redirect browser */
 		//exit();
+	}
+	
+	function updateUserStatus(){
+		global $conn;
+		$sql = "Update userinfo set status =".intval($this->status)." where id='".$this->id."'" ;
+		$res = $conn->prepare($sql);
+		$res->execute();
+	}
+	
+	function deleteUser(){
+		global $conn;
+		$sql = "DELETE FROM userinfo where id='".$this->id."'" ;
+		$res = $conn->prepare($sql);
+		$res->execute();		
 	}
 	}
 	?>
