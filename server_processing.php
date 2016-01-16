@@ -34,14 +34,13 @@ $columns = array(
 	array( 'db' => 'mobile',   'dt' => 2 ),
 	array( 'db' => 'city',     'dt' => 3 ),
 	array( 'db' => 'status',     'dt' => 4 ),
-	array( 'db' => 'id',     'dt' => 5 )
-	/*array(
-		'db'        => 'start_date',
-		'dt'        => 4,
-		'formatter' => function( $d, $row ) {
-			return date( 'jS M y', strtotime($d));
-		}
-	),
+	array( 'db' => 'id',     'dt' => 5 ),
+	array('db'  => 'date_time','dt' => 6,
+		'formatter' => function($d,$row) {
+			$phpdate = strtotime( $d );
+			return date( 'd-M-y H:i:s', $phpdate );
+		})
+	/*,
 	array(
 		'db'        => 'salary',
 		'dt'        => 5,
