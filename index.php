@@ -21,6 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="author" content="">
     
     <title>American Express Merchant</title>
+	<link rel="stylesheet" type="text/css" href="css/multiple-select.css">
 
     
     <!-- Just for debugging purposes. Don't actually copy this line! -->
@@ -401,5 +402,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<input type="submit" value="submit"/>
 		</form>
 	</div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" ></script>
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="js/jquery.multiple.select.js" ></script>
+	<script type="text/javascript" src="js/main.js" ></script>
   </body>
 </html>
