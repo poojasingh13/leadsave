@@ -45,7 +45,24 @@ $('.userform').validate({
 	},
 	errorPlacement: function(error,element){
 		error.appendTo(element.parent());
+	},
+	submitHandler: function(form) {
+		$.ajax({
+		  url: "lead.php",
+		  data: $(form).serialize()
+		}).done(function(r) {
+			if(r.res) {
+					alert('Data Saved Successfully');
+					document.getElementById('LeadSave').reset();
+					$('.ms-choice').find('span').html('Select City');
+			} else {
+				
+				alert('Oops!! Some error occured.');
+			}	
+		});
 	}
+
+	
 });
 
 $(document).ready(function(){
@@ -63,3 +80,15 @@ $(document).ready(function(){
 		}
 	});
 });
+
+	numericOnly = function(evt){
+        var evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ((charCode > 47 && charCode < 58)    || charCode == 8 || charCode == 9 ){
+            return !0;
+        }
+		evt.preventDefault();
+        return !1;
+    }
+	
+	document.getElementById("mobile").addEventListener("keypress", numericOnly, false);
