@@ -1,11 +1,13 @@
 <?php
 
-$dbhost = '127.0.0.1';
-$dbuser = 'root';
+$sql_details = array(
+	'user' => 'root',
+	'pass' => 'admin123',
+	'db'   => 'kfc_lead',
+	'host' => '127.0.0.1'
+);
 
-$dbpass = '';
+$conn = new PDO("mysql:host=".$sql_details['host'].";dbname=".$sql_details['db'], $sql_details['user'], $sql_details['pass']);
 
-$dbname = 'leadsave';
 
-$conn = new PDO("mysql:host=".$dbhost.";dbname=".$dbname, $dbuser, $dbpass);
 ?>

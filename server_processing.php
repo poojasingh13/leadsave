@@ -1,5 +1,5 @@
 <?php
-include_once('db_connection.php');
+
 /*
  * DataTables example server-side processing script.
  *
@@ -29,22 +29,30 @@ $primaryKey = 'id';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-
-	array( 'db' => 'id', 'dt' => 0 ),
-	array( 'db' => 'name',  'dt' => 1 ),
-	array( 'db' => 'email',   'dt' => 2 ),
+	array( 'db' => 'name', 'dt' => 0 ),
+	array( 'db' => 'email',  'dt' => 1 ),
+	array( 'db' => 'mobile',   'dt' => 2 ),
 	array( 'db' => 'city',     'dt' => 3 ),
-	array( 'db' => 'status',     'dt' => 4 )	
+	array( 'db' => 'status',     'dt' => 4 ),
+	array( 'db' => 'id',     'dt' => 5 )
+	/*array(
+		'db'        => 'start_date',
+		'dt'        => 4,
+		'formatter' => function( $d, $row ) {
+			return date( 'jS M y', strtotime($d));
+		}
+	),
+	array(
+		'db'        => 'salary',
+		'dt'        => 5,
+		'formatter' => function( $d, $row ) {
+			return '$'.number_format($d);
+		}
+	)*/
 );
 
 // SQL server connection information
-$sql_details = array(
-	'user' => $dbuser,
-	'pass' => $dbpass,
-	'db'   => $dbname,
-	'host' => $dbhost
-);
-
+include ('db_connection.php');
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP

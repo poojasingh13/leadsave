@@ -5,7 +5,7 @@ if(!isset($_SESSION)){ //Doesn't let Browser create Cache
 	}
 	session_start();
 }
-$url="http://localhost/leadsave/";
+$url="http://localhost/kfcleadsave/";
 
 if(!isset($_SESSION["login"])){
 	$_SESSION["login"]=false;
