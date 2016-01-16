@@ -29,12 +29,12 @@ $primaryKey = 'id';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-	array( 'db' => 'name', 'dt' => 0 ),
-	array( 'db' => 'email',  'dt' => 1 ),
-	array( 'db' => 'mobile',   'dt' => 2 ),
-	array( 'db' => 'city',     'dt' => 3 ),
-	array( 'db' => 'status',     'dt' => 4 ),
-	array( 'db' => 'id',     'dt' => 5 ),
+	array( 'db' => 'id', 'dt' => 0 ),
+	array( 'db' => 'name', 'dt' => 1 ),
+	array( 'db' => 'email',  'dt' => 2 ),
+	array( 'db' => 'mobile',   'dt' => 3 ),
+	array( 'db' => 'city',     'dt' => 4 ),
+	array( 'db' => 'status',     'dt' => 5 ),	
 	array('db'  => 'date_time','dt' => 6,
 		'formatter' => function($d,$row) {
 			$phpdate = strtotime( $d );
