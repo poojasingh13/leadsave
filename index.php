@@ -6,8 +6,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$user->name = $_POST["name"];
 		$user->email = $_POST["email"];
 		$user->mobile = $_POST["mobile"];
-		$user->city = $_POST["city"];
-		
+		$user->city = $_POST["city"];		
 		$user->createNewUser();	
 		
 	}
@@ -35,14 +34,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<div class="container">
 		<section>
 		<div class="row">
-		 <form role="form" class="userform">
+		 <form role="form" class="userform" method="post">
 			  <div class="form-group">
 				<label for="name">Name</label>
-				<input type="name" class="form-control" id="email" maxlength="50" />
+				<input type="text" name="name" id="name"  class="form-control"  maxlength="50" />
 			  </div>
 			  <div class="form-group">
 				<label for="pwd">Email:</label>
-				<input type="email" class="form-control" name="email" maxlength="70" />
+				<input type="email" class="form-control" name="email" id="email" maxlength="70" />
 			  </div>
 			  <div class="form-group">
 				<label for="pwd">Mobile:</label>
