@@ -24,20 +24,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 								<tbody>
 									
-									<tr>
+									<tr class="form-group">
 										<td><span class="spnname">User Name:</span></td>
 										<td>
-											<input type="text" maxlength="40" size="20"  name="txtUserName" class="inp" />
+											<input type="text" maxlength="40" size="20"  name="txtUserName" class="form-control" />
 											<span style="color:Red;font-weight: bold;" id="message"></span>
 										</td>
 									</tr>
-									<tr>
+									<tr class="form-group">
 										<td><span class="spnname">Password:</span></td>
-										<td><input type="password" maxlength="40" size="22" class="inp" name="txtUserPass" /></td>
+										<td><input type="password" maxlength="40" size="22" class="form-control" name="txtUserPass" /></td>
 									</tr>
 									<tr>
 										<td style="vertical-align: bottom;">&nbsp; </td>
-										<td align="left" style="padding-top: 8px;"><input type="submit"  value="Login" class="cls_submit" id="cmdLogin" name="cmdLogin" /></td>
+										<td align="left" style="padding-top: 8px;">
+										<input type="submit"  value="Login" class="btn btn-primary cls_submit" id="cmdLogin" name="cmdLogin" /></td>
 									</tr>
 								</tbody>
 							</table>
