@@ -23,13 +23,17 @@ CREATE TABLE `userinfo` (
   `city` varchar(10) NOT NULL,
   `status` int(1) default '1',
   `date_time` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `active` int(11) default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `unique_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `userinfo` */
 
-insert  into `userinfo`(`id`,`name`,`email`,`mobile`,`city`,`status`,`date_time`) values (3,'mohit','mohit.11.arora@gmail.com','9811370583','243',1,'2016-01-16 14:09:45');
+insert  into `userinfo`(`id`,`name`,`email`,`mobile`,`city`,`status`,`date_time`,`active`) values (3,'mohit','mohit.11.arora@gmail.com','9811370583','243',3,'2016-01-16 14:09:45',0);
+insert  into `userinfo`(`id`,`name`,`email`,`mobile`,`city`,`status`,`date_time`,`active`) values (4,'pooja','pooja.03.arora@gmail.com','9811370583','Delhi',1,'2016-01-16 15:26:23',1);
+insert  into `userinfo`(`id`,`name`,`email`,`mobile`,`city`,`status`,`date_time`,`active`) values (5,'aunty','mamama@gmail.com','9811370583','Bangalore',1,'2016-01-16 16:15:32',0);
+insert  into `userinfo`(`id`,`name`,`email`,`mobile`,`city`,`status`,`date_time`,`active`) values (6,'test','test@gmail.com','9811370583','Delhi',1,'2016-01-24 12:56:01',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -54,7 +54,16 @@ $('.userform').validate({
 		
 	},
 	unhighlight: function(element){
-		$(element).addClass('redborder');
+		switch (element.type) {
+			
+			case 'select-one':
+				$(element).parent().find('.placeholder').removeClass('redborder');
+				break;
+				
+			default:
+				$(element).removeClass('redborder');		
+			
+		}
 	},
 	errorPlacement: function(error,element){
 		//error.appendTo(element.parent());
