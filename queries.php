@@ -9,10 +9,10 @@ var $id,$email,$name,$mobile,$city,$status;
 		global $conn;
 		$q = "SELECT * FROM student WHERE email='".$this->$email."'";
 		
-		//die($q);
+		
 		$res = $conn->prepare($q);
 		$res->execute();
-		//$res = mysqli_query($GLOBALS['conn'],$q);
+		
 		$count = $res->rowCount();
 		if($count > 0){
 			return 1;
@@ -41,7 +41,8 @@ var $id,$email,$name,$mobile,$city,$status;
 	
 	function deleteUser(){
 		global $conn;
-		$sql = "DELETE FROM userinfo where id='".$this->id."'" ;
+		$sql = "Update userinfo set active = 0 where id='".$this->id."'" ;
+		//$sql = "DELETE FROM userinfo where id='".$this->id."'" ;
 		$res = $conn->prepare($sql);
 		$res->execute();		
 	}

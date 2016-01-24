@@ -59,9 +59,9 @@ include ('db_connection.php');
  */
 
 require( 'ssp.class.php' );
-
+$where = "active = 1";
 echo json_encode(
-	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
+	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns, $where )
 );
 
 

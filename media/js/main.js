@@ -3,18 +3,22 @@ $.validator.addMethod('notNull',function(value,element){
 },'Please Select a value');
 $('.userform').validate({
 	rules: {    
-		name: "required",    
+		name:{
+			required: true,			
+			minlength:2
+		},		
 		email: {
 		  required: true,
 		  email: true
 		},
 		mobile:{
-			required: true,
-			maxlength: 10,
+			required: true,			
 			minlength:10
 		},
 		city:{
-		"notNull":true
+			required: true,			
+			"notNull":true
+			
 		}
 	},
 	messages: {
@@ -24,9 +28,8 @@ $('.userform').validate({
 		  email: "Your email address must be in the format of name@domain.com"
 		},
 		mobile: {
-		  required: "Please enter your mobile number",
-		  maxlength: "Mobile number must be of ten digits",
-		  minlength: "Mobile number must be of ten digits"
+		  required: "Please enter your Company name",			
+			minlength:"Min 10 number",			
 		},
 		city:{
 		"notNull":'Please select your city'
@@ -38,27 +41,38 @@ $('.userform').validate({
 		$(element).valid();
 	},
 	highlight: function(element){
-		$(element).addClass('redborder');
+		switch (element.type) {
+			
+			case 'select-one':
+				$(element).parent().find('.placeholder').addClass('redborder');
+				break;
+				
+			default:
+				$(element).addClass('redborder');		
+			
+		}
+		
 	},
 	unhighlight: function(element){
 		$(element).addClass('redborder');
 	},
 	errorPlacement: function(error,element){
-		error.appendTo(element.parent());
+		//error.appendTo(element.parent());
 	},
 	submitHandler: function(form) {
 		$.ajax({
 		  url: "lead.php",
 		  data: $(form).serialize()
-		}).done(function(r) {
+		}).done(function(r) {			
 			if(r.res) {
-					alert('Data Saved Successfully');
+					$('#myModal').find('.modal-body').html('<p>Your information is saved successfully. Our representatives will get in touch with you shortly.</p>')							
 					document.getElementById('LeadSave').reset();
 					$('.ms-choice').find('span').html('Select City');
 			} else {
-				
-				alert('Oops!! Some error occured.');
-			}	
+				$('#myModal').find('.modal-body').html('<p>Oops!! Some error occured.</p>')
+				alert('');
+			}
+			$('#myModal').modal('show');			
 		});
 	}
 

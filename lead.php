@@ -10,11 +10,13 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
 					$user->name = $_REQUEST["name"];
 					$user->email = $_REQUEST["email"];
 					$user->mobile = $_REQUEST["mobile"];
-					$user->city = $_REQUEST["city"];		
+					$user->city = $_REQUEST["city"];	
+					$user->active = 1;						
 					$user->createNewUser();
 					$rtn['res']=true;
 				}catch (Exception $e) {		
 					$rtn['error']=$e;
+					$rtn['res']=false;
 				}
 				break;
 			case "update":
