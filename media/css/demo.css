@@ -453,7 +453,7 @@ div.column_half {
 	font-size:14px;
 	color:#999;
 	border: 0 none;
-    height: 43px;
+    height: 45px;
     line-height: 43px;
 }
 
@@ -498,7 +498,7 @@ div.column_half {
 	color: #c21330;
     float: right;
     font-family: "gotham_boldregular";
-    font-size: 28px;
+    font-size: 18px;
 	line-height: 25px;
     margin-top: 10px;
     width: 40%;
@@ -534,12 +534,15 @@ footer {
 }
 
 .error-mgs .input-group-addon,
-.error-mgs .form-control {
+.error-mgs .form-control,
+.error-mgs.ms-choice  {
 	background-color:#ff9999;
 	
 }
 
-.error-mgs .form-control::-moz-placeholder {
+.error-mgs .form-control::-moz-placeholder ,
+.form-wrap .error-mgs.ms-choice > span.placeholder
+{
    	color:#900;
     opacity: 1;
 }

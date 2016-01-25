@@ -44,11 +44,11 @@ $('.userform').validate({
 		switch (element.type) {
 			
 			case 'select-one':
-				$(element).parent().find('.placeholder').addClass('redborder');
+				$(element).parent().find('.ms-choice').addClass('error-mgs');
 				break;
 				
 			default:
-				$(element).addClass('redborder');		
+				$(element).closest('.input-group').addClass('error-mgs');
 			
 		}
 		
@@ -57,11 +57,11 @@ $('.userform').validate({
 		switch (element.type) {
 			
 			case 'select-one':
-				$(element).parent().find('.placeholder').removeClass('redborder');
+				$(element).parent().find('.ms-choice').removeClass('error-mgs');
 				break;
 				
 			default:
-				$(element).removeClass('redborder');		
+				$(element).closest('.input-group').removeClass('error-mgs');
 			
 		}
 	},
