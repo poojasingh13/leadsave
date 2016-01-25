@@ -11,7 +11,7 @@ include_once('global_var.php');
     <meta name="author" content="">
 	<link rel="stylesheet" type="text/css" href="media/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="media/css/jquery.multiple.css">
-	<link rel="stylesheet" type="text/css" href="media/css/demo.css?<?php echo $bpc; ?>">	
+	<link rel="stylesheet" type="text/css" href="media/css/demo.css?bpc=<?php echo $bpc; ?>">	
 	<link rel="stylesheet" type="text/css" href="media/fonts/font.css">	
     <title>KFC</title>  
   </head>
@@ -475,6 +475,6 @@ include_once('global_var.php');
 	<script type="text/javascript" src="media/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="media/js/jquery.validate.js"></script>
 	<script type="text/javascript" src="media/js/jquery.multiple.select.js" ></script>
-	<script type="text/javascript" src="media/js/main.js?<?php echo $bpc; ?>" ></script>
+	<script type="text/javascript" src="media/js/main.js??bpc=<?php echo $bpc; ?>" ></script>
   </body>
 </html>
