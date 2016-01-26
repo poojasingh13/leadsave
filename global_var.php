@@ -6,8 +6,8 @@ if(!isset($_SESSION)){ //Doesn't let Browser create Cache
 	session_start();
 }
 $url="http://localhost/kfcleadsave/";
-/*$url="http://digiqom.com/kfc/";*/
-$bpc=1;
+//$url="http://digiqom.com/kfc/";
+$bpc=2;
 
 if(!isset($_SESSION["login"])){
 	$_SESSION["login"]=false;

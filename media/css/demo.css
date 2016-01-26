@@ -724,8 +724,9 @@ footer {
 	border:none;
 }
 
-.dataTable thead .nosorting.sorting_asc::after, .dataTable thead .nosorting.sorting_desc::after{
-	display:none;	
+.dataTable thead .nosorting::after{
+	display:none;
+	content:'' !important;	
 }
 .redborder {
 	background:#ffefef ;

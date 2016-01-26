@@ -8,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		header("Location: ".$GLOBALS['url']."table.php"); /* Redirect browser */
 		die();
 	} else {
-			$_error = '<span class="error">Email Id and Password do not match</span>';
+			$_error = '<span class="error">User name and Password do not match</span>';
 		
 	}
  }
