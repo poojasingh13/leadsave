@@ -14,7 +14,7 @@ body.dt-example-bootstrap {
 	font-size:13px;
 }
 
-div.container {
+.container{
 	max-width: 980px;
 	margin: 0 auto;
 }
@@ -346,7 +346,7 @@ div.column_half {
 
 .logoInside {width:50%; margin:0 0 40px 0;}
 .heading { color:#c21330; font-size:35px; }
-.container { background:url(../images/bg.png) repeat;}
+.container{ background:url(../images/bg.png) repeat;}
 
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover { background:#c21330; border:solid 1px #c21330;}
@@ -355,7 +355,7 @@ div.column_half {
 
 .main-head {
     font-family: "gotham_blackregular";
-    font-size: 22px;
+    font-size: 25px;
     line-height: 28px;
 }
 
@@ -433,7 +433,7 @@ div.column_half {
 
 .form-wrap .ms-choice > div {
     background-image: url("../images/form-icons.png");
-    background-position: -75px 8px;
+    background-position: -75px 10px;
     background-repeat: no-repeat;
     content: "";
     display: inline-block;
@@ -729,4 +729,14 @@ footer {
 }
 .redborder {
 	background:#ffefef ;
+}
+.ms-drop ul > li label{
+	padding:2px;
+}
+.ms-parent .ms-choice > span{
+color: #555 !important;
+}
+
+.ms-parent .ms-choice > span.placeholder {
+    color: #999 !important;
 }

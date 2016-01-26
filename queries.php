@@ -2,7 +2,7 @@
 include_once("db_connection.php");
 
 class newuser{
-var $id,$email,$name,$mobile,$city,$status;
+var $id,$email,$name,$mobile,$city,$status,$company;
 
 	/* for checking if student exists or not */
 	function checkifexist(){
@@ -11,8 +11,7 @@ var $id,$email,$name,$mobile,$city,$status;
 		
 		
 		$res = $conn->prepare($q);
-		$res->execute();
-		
+		$res->execute();		
 		$count = $res->rowCount();
 		if($count > 0){
 			return 1;
@@ -23,20 +22,20 @@ var $id,$email,$name,$mobile,$city,$status;
 
 	function createNewUser(){
 		global $conn;
-		$sql = "INSERT INTO userinfo(name,email,mobile,city)
-				VALUES('".$this->name."','".$this->email."','".$this->mobile."','".$this->city."')";
+		$sql = "INSERT INTO userinfo(name,email,mobile,city,company)
+				VALUES('".$this->name."','".$this->email."','".$this->mobile."','".$this->city."','".$this->company."')";
 		$res = $conn->prepare($sql);
-		$res->execute();
-		$_SESSION["email"]=$this->email;
+		return $res->execute();
+		//$_SESSION["email"]=$this->email;
 		/*header("Location: ".$GLOBALS['url']."userDetail.php?PHPSESSID=".session_id()); /* Redirect browser */
 		//exit();
 	}
 	
 	function updateUserStatus(){
 		global $conn;
-		$sql = "Update userinfo set status =".intval($this->status)." where id='".$this->id."'" ;
+		$sql = "Update userinfo set call1 =".intval($this->call1).", call2 =".intval($this->call2).", meet_held =".intval($this->meet_held).", send_email =".intval($this->send_email).", deal_closed =".intval($this->deal_closed)." where id='".$this->id."'" ;
 		$res = $conn->prepare($sql);
-		$res->execute();
+		return $res->execute();
 	}
 	
 	function deleteUser(){
@@ -44,7 +43,7 @@ var $id,$email,$name,$mobile,$city,$status;
 		$sql = "Update userinfo set active = 0 where id='".$this->id."'" ;
 		//$sql = "DELETE FROM userinfo where id='".$this->id."'" ;
 		$res = $conn->prepare($sql);
-		$res->execute();		
+		return $res->execute();		
 	}
 	}
 	?>

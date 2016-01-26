@@ -33,14 +33,14 @@ include_once('global_var.php');
             <div class="col-lg-5 col-md-5 col-sm-6 rel">
             	<span class="aro hidden-xs"></span>
 				<ul class="best-list">
-                	<li>Get the best deals for your employees</li>
+                	<li>Gift your employees the best rewards</li>
                     <li>Call us for your office catering</li>
                     <li>Or get the best deals for your employees</li>
 				</ul>
             </div>
 			<div class="col-lg-5 col-md-5 col-sm-6">
             	<div class="register-form">
-                	<p>Leave your details and KFC representatives will get in touch with you</p>
+                	<p>Leave your details with us, and we will get in touch with you</p>
 					<div class="form-wrap">
 						<form role="form" id="LeadSave" class="userform" method="post">
 						  <div class="input-group">
@@ -54,6 +54,10 @@ include_once('global_var.php');
 						  <div class="input-group">
 							<span class="input-group-addon" id="basic-addon1"><span class="company-icon"></span></span>
 							<input type="text" name="mobile" placeholder="Mobile No" class="form-control" id="mobile" maxlength="12">
+						  </div>
+						  <div class="input-group">
+							<span class="input-group-addon" id="basic-addon1"><span class="company-icon"></span></span>
+							<input type="text" name="company" placeholder="Company / Corporate" class="form-control" id="company" maxlength="100">
 						  </div>
 						  <div class="form-group" style="min-height:59px;">
 							<div>							

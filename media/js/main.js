@@ -17,9 +17,12 @@ $('.userform').validate({
 		},
 		city:{
 			required: true,			
-			"notNull":true
-			
-		}
+			"notNull":true		
+		},
+		company:{
+			required: true,			
+			minlength:2
+		}	
 	},
 	messages: {
 		name: "Please specify your name",
@@ -74,12 +77,12 @@ $('.userform').validate({
 		  data: $(form).serialize()
 		}).done(function(r) {			
 			if(r.res) {
-					$('#myModal').find('.modal-body').html('<p>Your information is saved successfully. Our representatives will get in touch with you shortly.</p>')							
-					document.getElementById('LeadSave').reset();
-					$('.ms-choice').find('span').html('Select City');
+				$('#myModal').find('.modal-body').html('<p>Your details saved successfully, and we will get in touch with you shortly</p>');							
+				document.getElementById('LeadSave').reset();
+				$('.ms-choice').find('span').html('Select City');
 			} else {
 				$('#myModal').find('.modal-body').html('<p>Oops!! Some error occured.</p>')
-				alert('');
+				
 			}
 			$('#myModal').modal('show');			
 		});
@@ -100,6 +103,10 @@ $(document).ready(function(){
 			if(value == ''){
 				return 'display:none';
 			}
+		},
+		onClick:function(obj) {			
+			obj.inp.valid();
+			//obj.inp.closest('div').find('.placeholder').addClass('.selectedtext');
 		}
 	});
 });

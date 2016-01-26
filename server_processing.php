@@ -34,12 +34,18 @@ $columns = array(
 	array( 'db' => 'email',  'dt' => 2 ),
 	array( 'db' => 'mobile',   'dt' => 3 ),
 	array( 'db' => 'city',     'dt' => 4 ),
-	array( 'db' => 'status',     'dt' => 5 ),	
+	array( 'db' => 'company',     'dt' => 5 ),
 	array('db'  => 'date_time','dt' => 6,
 		'formatter' => function($d,$row) {
 			$phpdate = strtotime( $d );
 			return date( 'd-M-y H:i:s', $phpdate );
-		})
+		}),
+	
+array( 'db' => 'call1',     'dt' => 7 ),
+array( 'db' => 'call2',     'dt' => 8),
+array( 'db' => 'meet_held',     'dt' => 9 ),
+array( 'db' => 'send_email',     'dt' => 10 ),
+array( 'db' => 'deal_closed',     'dt' => 11 )		
 	/*,
 	array(
 		'db'        => 'salary',

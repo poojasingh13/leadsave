@@ -1,7 +1,7 @@
 <title>Leads</title>
 </head>
-<body class="dt-example dt-example-bootstrap">
-	<div class="container">
+<body class="dt-example dt-example-bootstrap inner-bg">
+	<div class="container-fluid no-bg">
 		<section>
 			<span class="pull-right logoInside">
 				<img src="media/images/logo-inner.png" class="pull-right" >
@@ -22,9 +22,14 @@
 							<th>Name</th>
 							<th>Email</th>
 							<th>Mobile</th>
+							<th>Company</th>
 							<th>city</th>
 							<th>Date</th>
-							<th>Status</th>							
+							<th>Call</th>							
+							<th>Fix Meet</th>							
+							<th>Meet held</th>							
+							<th>Send Email</th>							
+							<th>Deal closed</th>							
 							<th>Edit / Delete</th>
 						</tr>
 					</thead>
@@ -34,9 +39,14 @@
 							<th>Name</th>
 							<th>Email</th>
 							<th>Mobile</th>
+							<th>Company</th>
 							<th>city</th>							
 							<th>Date</th>
-							<th>Status</th>
+							<th>Call</th>							
+							<th>Fix Meet</th>							
+							<th>Meet held</th>							
+							<th>Send Email</th>							
+							<th>Deal closed</th>							
 							<th>Edit / Delete</th>
 							
 						</tr>
@@ -45,6 +55,23 @@
 			</div>	
 		</section>
 	</div>
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Alert</h4>
+		  </div>
+		  <div class="modal-body">
+			<p></p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<script type="text/javascript" src="media/js/bootstrap.min.js"></script>
 	<script type="text/javascript" language="javascript" class="init">
 	var t ;
 	$(document).ready(function() {
@@ -55,7 +82,7 @@
 				"aoColumnDefs" : [
 				 {
 				   'bSortable' : false,
-				   'aTargets' : [ 1,2,3,6,7 ]
+				   'aTargets' : [ 1,2,3,4,12 ]
 				 }],
 				 "fnCreatedRow": function (row, data, index) {
 					$('td', row).eq(0).html(index + 1);
@@ -66,35 +93,112 @@
 						}
 					},
 					{ data: null, render: function ( data, type, row ) {                
-						return data[1];
+						return data[1]; /*Name */
 						}
 					},
 					{ data: null, render: function ( data, type, row ) {                
-						return data[2];
+						return data[2]; /* Email */
 						} 
 					},
 					{ data: null, render: function ( data, type, row ) {                
-						return data[3];
+						return data[3]; /* Mobile */
 						} 
 					},
 					{ data: null, render: function ( data, type, row ) {                
-						return data[4];
+						return data[5]; /* Company */
+						} 
+					},
+					{ data: null, render: function ( data, type, row ) {                
+						return data[4]; /* City */
 						} 
 					},					
 					{ data: null, render: function ( data, type, row ) {                
-						return data[6];
+						return data[6]; /* Date */
 						} 
 					},
 					{ data: null, render: function ( data, type, row ) {
-						var status;
-						if(data[5] == '1'){
-							status = 'A';
-						}else if(data[5] == '2'){
-							status = 'B';
-						}else if(data[5] == '3'){
-							status = 'c';
+						var status,nostatus,yesstatus;  /* call1 */
+						if(data[7] == '0'){
+							status = 'No';
+							nostatus = 'selected';
+							yesstatus = '';
+							
+						}else {
+							status = 'Yes';
+							yesstatus = 'selected';
+							nostatus = '';
 						}
-						return '<span class="cls_userstatus">'+status+'</span><span style="display:none" class="cls_userstatuslist"><select class="cls_status"><option value="1">A</option><option value="2">B</option><option value="3">c</option></select></span>';
+						return '<span class="cls_userstatus">'+status+'</span> \
+							<span style="display:none" class="cls_userstatuslist"> \
+							<select class="cls_status cls_call1"><option value="0"' + nostatus + '>No</option><option value="1"' + yesstatus +'>Yes</option></select></span>';
+						} 
+					},
+					{ data: null, render: function ( data, type, row ) {
+						var status,nostatus,yesstatus;  /* call2 */
+						if(data[8] == '0'){
+							status = 'No';
+							nostatus = 'selected';
+							yesstatus = '';
+							
+						}else {
+							status = 'Yes';
+							yesstatus = 'selected';
+							nostatus = '';
+						}
+						return '<span class="cls_userstatus">'+status+'</span> \
+							<span style="display:none" class="cls_userstatuslist"> \
+							<select class="cls_status cls_call2"><option value="0"' + nostatus + '>No</option><option value="1"' + yesstatus +'>Yes</option></select></span>';
+						} 
+					},
+					{ data: null, render: function ( data, type, row ) {
+						var status,nostatus,yesstatus;  /* meet held */
+						if(data[9] == '0'){
+							status = 'No';
+							nostatus = 'selected';
+							yesstatus = '';
+							
+						}else {
+							status = 'Yes';
+							yesstatus = 'selected';
+							nostatus = '';
+						}
+						return '<span class="cls_userstatus">'+status+'</span> \
+							<span style="display:none" class="cls_userstatuslist"> \
+							<select class="cls_status cls_meet_held"><option value="0"' + nostatus + '>No</option><option value="1"' + yesstatus +'>Yes</option></select></span>';
+						} 
+					},
+					{ data: null, render: function ( data, type, row ) {
+						var status,nostatus,yesstatus;  /* send email */
+						if(data[10] == '0'){
+							status = 'No';
+							nostatus = 'selected';
+							yesstatus = '';
+							
+						}else {
+							status = 'Yes';
+							yesstatus = 'selected';
+							nostatus = '';
+						}
+						return '<span class="cls_userstatus">'+status+'</span> \
+							<span style="display:none" class="cls_userstatuslist"> \
+							<select class="cls_status cls_send_email"><option value="0"' + nostatus + '>No</option><option value="1"' + yesstatus +'>Yes</option></select></span>';
+						} 
+					},
+					{ data: null, render: function ( data, type, row ) {
+						var status,nostatus,yesstatus;  /* deal closed */
+						if(data[11] == '0'){
+							status = 'No';	
+							nostatus = 'selected';
+							yesstatus = '';
+							
+						}else {
+							status = 'Yes';
+							yesstatus = 'selected';
+							nostatus = '';
+						}
+						return '<span class="cls_userstatus">'+status+'</span> \
+							<span style="display:none" class="cls_userstatuslist"> \
+							<select class="cls_status cls_deal_closed"><option value="0"' + nostatus + '>No</option><option value="1"' + yesstatus +'>Yes</option></select></span>';
 						} 
 					},
 					{
@@ -104,7 +208,7 @@
 						return '<span class="cls_userinfoedit"><a href="javascript:void(0)" data-id="'+data[0]+'"  class="editor_edit">Edit</a> / <a href="javascript:void(0)" data-id="'+data[0]+'" class="editor_remove">Delete</a> </span>'+
 						'<span class="cls_userinfoupdate" style="display:none"><a href="javascript:void(0)" data-id="'+data[0]+'"  class="editor_update">Update</a> / <a href="javascript:void(0)" data-id="'+data[0]+'" class="editor_cancel">Cancel</a></span>';
 						} 
-						//defaultContent: '<a href="" data-id="'+data[5]+'"  class="editor_edit">Edit</a> / <a href="" class="editor_remove">Delete</a>'
+						
 					}
 				]
 			});		
@@ -121,14 +225,16 @@
 			var userid = $(this).data('id');			
 			$.ajax({
 			  url: "lead.php",
-			  data: {'id':'update','userid':userid,'status':obj.closest('tr').find('.cls_status').val()}
+			  data: {'id':'update','userid':userid,'call1':obj.closest('tr').find('.cls_call1').val(),'call2':obj.closest('tr').find('.cls_call2').val()
+				,'meet_held':obj.closest('tr').find('.cls_meet_held').val(),'send_email':obj.closest('tr').find('.cls_send_email').val(),'deal_closed':obj.closest('tr').find('.cls_deal_closed').val()}
 			}).done(function(r) {
 				if(r.res) {
-						alert('status updated Successfully');						
-						t.ajax.reload( null, false );
-				} else {					
-					alert('Oops!! Some error occured.');
-				}	
+					$('#myModal').find('.modal-body').html('<p>Updated successfully</p>');
+					t.ajax.reload( null, false );								
+				} else {							
+					$('#myModal').find('.modal-body').html('<p>Oops some error occured</p>');
+				}
+				$('#myModal').modal('show');	
 			});
 			});
 			$(document).on('click','.editor_remove',function(){
@@ -141,12 +247,12 @@
 					  data: {'id':'delete','userid':userid}
 					}).done(function(r) {
 						if(r.res) {
-								alert('User deleted Successfully');
-								t.ajax.reload( null, false );
-								
+							$('#myModal').find('.modal-body').html('<p>Deleted successfully</p>');
+							t.ajax.reload( null, false );								
 						} else {							
-							alert('Oops!! Some error occured.');
-						}	
+							$('#myModal').find('.modal-body').html('<p>Oops some error occured</p>');
+						}
+						$('#myModal').modal('show');			
 					});	
 				}
 			});

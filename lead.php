@@ -4,16 +4,18 @@ include_once("queries.php");
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']=="XMLHttpRequest") {
 	if( isset( $_REQUEST["id"] ) ) {
 		$user = new newuser();
+		$k=false;
 		switch($_REQUEST["id"]){
 			case "save":
 				try {					
 					$user->name = $_REQUEST["name"];
 					$user->email = $_REQUEST["email"];
 					$user->mobile = $_REQUEST["mobile"];
-					$user->city = $_REQUEST["city"];	
+					$user->city = $_REQUEST["city"];
+					$user->company = $_REQUEST["company"];					
 					$user->active = 1;						
-					$user->createNewUser();
-					$rtn['res']=true;
+					$k = $user->createNewUser();					
+					$rtn['res']=$k;
 				}catch (Exception $e) {		
 					$rtn['error']=$e;
 					$rtn['res']=false;
@@ -22,9 +24,13 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
 			case "update":
 				try {					
 					$user->id = $_REQUEST["userid"];
-					$user->status = $_REQUEST["status"];
-					$user->updateUserStatus();
-					$rtn['res']=true;
+					$user->call1 = $_REQUEST["call1"];
+					$user->call2 = $_REQUEST["call2"];
+					$user->meet_held = $_REQUEST["meet_held"];
+					$user->send_email = $_REQUEST["send_email"];
+					$user->deal_closed = $_REQUEST["deal_closed"];
+					$k = $user->updateUserStatus();
+					$rtn['res']=$k;
 				}catch (Exception $e) {		
 					$rtn['error']=$e;
 				}
@@ -32,8 +38,8 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
 			case "delete":
 				try {					
 					$user->id = $_REQUEST["userid"];					
-					$user->deleteUser();
-					$rtn['res']=true;
+					$k = $user->deleteUser();
+					$rtn['res']= $k ;
 				}catch (Exception $e) {		
 					$rtn['error']=$e;
 				}
@@ -41,6 +47,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
 		}
 		
 		header('Content-Type:application/json');
+		//echo $k;
 		echo json_encode($rtn);
 	}
 }
