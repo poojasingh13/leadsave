@@ -29,13 +29,13 @@ include_once('global_var.php');
         	<div class="clearfix"></div>    
         </header>
 		<section class="w100fl">
-			<div class="col-lg-2 col-md-2 hidden-sm hidden-xs"><img src="media/images/kfc_left-1.png" class="img-responsive"></div>
+			<div class="col-lg-2 col-md-2 hidden-sm hidden-xs" style="margin-top:46px"><img src="media/images/kfc_left-1.png" class="img-responsive"></div>
             <div class="col-lg-5 col-md-5 col-sm-6 rel">
             	<span class="aro hidden-xs"></span>
 				<ul class="best-list">
-                	<li>Gift your employees the best rewards</li>
-                    <li>Call us for your office catering</li>
-                    <li>Or get the best deals for your employees</li>
+                	<li class="imga">Gift your employees the best rewards</li>
+                    <li class="imgb">Call us for your office catering</li>
+                    <li class="imgc">Or get the best deals for your employees</li>
 				</ul>
             </div>
 			<div class="col-lg-5 col-md-5 col-sm-6">
@@ -52,12 +52,12 @@ include_once('global_var.php');
 							<input type="email" class="form-control" placeholder="Email" name="email" id="email" maxlength="70" />
 						  </div>
 						  <div class="input-group">
-							<span class="input-group-addon" id="basic-addon1"><span class="company-icon"></span></span>
+							<span class="input-group-addon" id="basic-addon1"><span class="mobile-icon"></span></span>
 							<input type="text" name="mobile" placeholder="Mobile No" class="form-control" id="mobile" maxlength="12">
 						  </div>
 						  <div class="input-group">
 							<span class="input-group-addon" id="basic-addon1"><span class="company-icon"></span></span>
-							<input type="text" name="company" placeholder="Company / Corporate" class="form-control" id="company" maxlength="100">
+							<input type="text" name="company" placeholder="Company" class="form-control" id="company" maxlength="100">
 						  </div>
 						  <div class="form-group" style="min-height:59px;">
 							<div>							
@@ -428,7 +428,7 @@ include_once('global_var.php');
         <section>
         	<div class="form-bottom rel">
         		<span class="happy-emp-img hidden-xs"><img src="media/images/form-bottom-img.png" class="img-responsive"></span>
-            	<span class="happy-emp">“Happy Employees lead to Happy Balance Sheets”</span>
+            	
             </div>
         	
         </section><!-- form bottom image ends here -->
@@ -446,7 +446,7 @@ include_once('global_var.php');
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             	<span><img src="media/images/whatKFC-3.png" class="img-responsive"></span>
-                <p class="what-txt">We bring the best deals for your employees </p>
+                <p class="what-txt">We bring the best deals for your employees. </p>
             </div>
         <div class="clearfix"></div>    
         </section><!-- What Makes KFC widgets Ends here -->
