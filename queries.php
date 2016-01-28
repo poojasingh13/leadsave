@@ -8,8 +8,6 @@ var $id,$email,$name,$mobile,$city,$status,$company;
 	function checkifexist(){
 		global $conn;
 		$q = "SELECT * FROM student WHERE email='".$this->$email."'";
-		
-		
 		$res = $conn->prepare($q);
 		$res->execute();		
 		$count = $res->rowCount();
@@ -24,6 +22,7 @@ var $id,$email,$name,$mobile,$city,$status,$company;
 		global $conn;
 		$sql = "INSERT INTO userinfo(name,email,mobile,city,company)
 				VALUES('".$this->name."','".$this->email."','".$this->mobile."','".$this->city."','".$this->company."')";
+		//echo $sql;
 		$res = $conn->prepare($sql);
 		return $res->execute();
 		//$_SESSION["email"]=$this->email;
@@ -33,7 +32,12 @@ var $id,$email,$name,$mobile,$city,$status,$company;
 	
 	function updateUserStatus(){
 		global $conn;
-		$sql = "Update userinfo set call1 =".intval($this->call1).", call2 =".intval($this->call2).", meet_held =".intval($this->meet_held).", send_email =".intval($this->send_email).", deal_closed =".intval($this->deal_closed)." where id='".$this->id."'" ;
+		if($this->send_email) {
+			$sql = "Update userinfo set call1 =".intval($this->call1).", call2 =".intval($this->call2).", meet_held =".intval($this->meet_held).", send_email =".intval($this->send_email).", email_date ='".$this->email_date."', deal_closed =".intval($this->deal_closed)." where id='".$this->id."'" ;
+		} else {
+			$sql = "Update userinfo set call1 =".intval($this->call1).", call2 =".intval($this->call2).", meet_held =".intval($this->meet_held).", send_email =".intval($this->send_email).", deal_closed =".intval($this->deal_closed)." where id='".$this->id."'" ;
+		}	
+		//return $sql;
 		$res = $conn->prepare($sql);
 		return $res->execute();
 	}

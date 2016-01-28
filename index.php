@@ -24,7 +24,7 @@ include_once('global_var.php');
             </div>
             
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
-            	<h1 class="pull-right"><img src="media/images/logo.png" class="img-responsive"></h1>
+            	<h1 class="pull-right"><img src="media/images/logo.png?bpc=<?php echo $bpc; ?>" class="img-responsive"></h1>
             </div>
         	<div class="clearfix"></div>    
         </header>

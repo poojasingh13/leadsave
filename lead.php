@@ -28,8 +28,11 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
 					$user->call2 = $_REQUEST["call2"];
 					$user->meet_held = $_REQUEST["meet_held"];
 					$user->send_email = $_REQUEST["send_email"];
-					$user->deal_closed = $_REQUEST["deal_closed"];
+					$user->deal_closed = $_REQUEST["deal_closed"];					
+					$user->email_date = $_REQUEST["email_date"];
+					
 					$k = $user->updateUserStatus();
+					//echo $k;
 					$rtn['res']=$k;
 				}catch (Exception $e) {		
 					$rtn['error']=$e;

@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" href="media/css/jquery.datetimepicker.css" />
+<script type="text/javascript" src="media/js/jquery.datetimepicker.full.js"></script>
+
 <title>Leads</title>
 </head>
 <body class="dt-example dt-example-bootstrap inner-bg">
@@ -33,23 +36,7 @@
 							<th>Edit / Delete</th>
 						</tr>
 					</thead>
-					<tfoot>
-						<tr>
-							<th>No</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Mobile</th>
-							<th>Company</th>
-							<th>City*</th>
-							<th>Date*</th>
-							<th>Call*</th>							
-							<th>Fix Meet*</th>							
-							<th>Meet held*</th>							
-							<th>Send Email*</th>							
-							<th>Deal closed*</th>							
-							<th>Edit / Delete</th>							
-						</tr>
-					</tfoot>
+					
 				</table>
 			</div>
 		* Click to sort		
@@ -175,13 +162,14 @@
 							yesstatus = '';
 							
 						}else {
-							status = 'Yes';
+							status = 'Yes' + (data[12] != null ? ' | '+data[12] : '');
 							yesstatus = 'selected';
 							nostatus = '';
 						}
 						return '<span class="cls_userstatus">'+status+'</span> \
 							<span style="display:none" class="cls_userstatuslist"> \
-							<select class="cls_status cls_send_email"><option value="0"' + nostatus + '>No</option><option value="1"' + yesstatus +'>Yes</option></select></span>';
+							<select class="cls_status cls_send_email"><option value="0"' + nostatus + '>No</option><option value="1"' + yesstatus +'>Yes</option></select>\
+							<input placeholder="YYYY-MM-DD" style="margin-top:5px" id="datetimepicker" value="'+(data[12] != null ?  data[12] : '')+'" class="cls_email_date" name="email_date" type="text" ></span>';
 						} 
 					},
 					{ data: null, render: function ( data, type, row ) {
@@ -219,14 +207,29 @@
 			$(this).closest('.cls_userinfoedit').next('.cls_userinfoupdate').toggle();
 			$(this).closest('tr').find('.cls_userstatuslist').toggle();
 			$(this).closest('tr').find('.cls_userstatus').toggle();
+			$(this).closest('tr').find('#datetimepicker').datetimepicker({
+			allowTimes:[
+			  '08:00','08:30','09:00','09:30','10:00','10:30','11:00','11.30','12:00', '12:30', '13:00', 
+			  '13:30', '14:00','14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', 
+			  '18:30', '19:00', '19:30', '20:00', '20:30', '21:00','21.30','22.00'
+			 ],
+			 format:'Y-m-d H:i:s'
+			});
 		});
 		$(document).on('click','.editor_update',function(){
 			var obj = $(this);
 			var userid = $(this).data('id');			
+			if(obj.closest('tr').find('.cls_send_email').val() == 1) {
+				if(obj.closest('tr').find('.cls_email_date').val() == '') {
+					alert('Kindly enter date to continue');
+					return false;
+				}
+			}
 			$.ajax({
 			  url: "lead.php",
 			  data: {'id':'update','userid':userid,'call1':obj.closest('tr').find('.cls_call1').val(),'call2':obj.closest('tr').find('.cls_call2').val()
-				,'meet_held':obj.closest('tr').find('.cls_meet_held').val(),'send_email':obj.closest('tr').find('.cls_send_email').val(),'deal_closed':obj.closest('tr').find('.cls_deal_closed').val()}
+				,'meet_held':obj.closest('tr').find('.cls_meet_held').val(),'send_email':obj.closest('tr').find('.cls_send_email').val(),'deal_closed':obj.closest('tr').find('.cls_deal_closed').val()
+				,'email_date':obj.closest('tr').find('.cls_email_date').val()}
 			}).done(function(r) {
 				if(r.res) {
 					$('#myModal').find('.modal-body').html('<p>Updated successfully</p>');
