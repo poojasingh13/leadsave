@@ -361,16 +361,37 @@ div.column_half {
 
 .best-list {
 	font-family: "gotham_boldregular";
-    font-size: 26px;
+    font-size: 22px;
     line-height: 26px;
     list-style-type: none;
     padding: 50px 0 0;
 }
 
 .best-list li {
-	margin-bottom:70px;
+    border-bottom: 1px dotted #da8695;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    padding-left: 120px;
+    position: relative;
+}
+.best-list li::before {
+    background: url("../images/best-deals.png") no-repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 57px;
+    left: 5px;
+    position: absolute;
+    width: 74px;
+	top:-10px
 }
 
+.best-list .img2::before {
+	background: url("../images/kfc-card.png") no-repeat scroll 0 0;
+}
+.best-list .img3::before {
+	background: url("../images/call.png") no-repeat scroll 0 0;
+}
+	
 .aro {
 	background:url(../images/aro.png) no-repeat;
 	width:113px;
@@ -508,8 +529,8 @@ div.column_half {
 }
 
 .happy-emp-img {
-	margin: -70px 10px 10px 230px;
-    width: 320px;
+	margin: -117px 10px 10px 50px;
+    width: 615px;
 }
 
 .what-txt {
@@ -643,36 +664,41 @@ footer {
 
 
 @media screen and (max-width : 480px) and (orientation: portrait) {
-.happy-emp-img {
-    margin: 0 10px 10px 0;
-    width: 290px;
-}
+	.happy-emp-img {
+		margin: 0 10px 10px 0;
+		width: 290px;
+	}
 
-.happy-emp {
-    font-size: 22px;
-    margin-bottom: 25px;
-    text-align: center;
-    width: 100%;
-}
+	.happy-emp {
+		font-size: 22px;
+		margin-bottom: 25px;
+		text-align: center;
+		width: 100%;
+	}
 
-.what-makes-kfc h2 {
-	font-size:25px;
-}
+	.what-makes-kfc h2 {
+		font-size:25px;
+	}
 
-.what-txt {
-	 margin-bottom: 30px;
-    margin-top: 10px;
-}
+	.what-txt {
+		 margin-bottom: 30px;
+		margin-top: 10px;
+	}
 
-.best-list {
-    font-size: 20px;
-    line-height: 25px;
-    padding: 20px 0 10px;
-}
+	.best-list {
+		font-size: 20px;
+		line-height: 25px;
+		padding: 20px 0 10px;
+	}
 
-.best-list li {
-    margin-bottom: 15px;
-}
+	.best-list li {
+		margin-bottom: 15px;
+	}
+	
+	.best-list li::before{
+		top:10px;
+		
+	}
 
 
 }

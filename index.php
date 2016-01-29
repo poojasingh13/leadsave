@@ -17,10 +17,10 @@ include_once('global_var.php');
   </head>
   <body class="dt-example dt-example-bootstrap">
 	<div class="container">
-		<header class="marginTop-30">
+		<header>
         	<div class="col-lg-9 col-md-9">
-            	<p><img src="media/images/kfc_treat.png" class="img-responsive"></p>
-                <p class="main-head">Get KFC's Finger-Lickin’ range in office and boost the productivity quotient!</p>
+            	<p><img src="media/images/kfc_treat_1.png" class="img-responsive"></p>
+                <p><img src="media/images/get-kfc.png" class="img-responsive"></p>
             </div>
             
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
@@ -29,13 +29,15 @@ include_once('global_var.php');
         	<div class="clearfix"></div>    
         </header>
 		<section class="w100fl">
-			<div class="col-lg-2 col-md-2 hidden-sm hidden-xs" style="margin-top:46px"><img src="media/images/kfc_left-1.png" class="img-responsive"></div>
-            <div class="col-lg-5 col-md-5 col-sm-6 rel">
+			<!--<div class="col-lg-2 col-md-2 hidden-sm hidden-xs" style="margin-top:46px"><img src="media/images/kfc_left-1.png" class="img-responsive"></div>-->
+            <div class="col-lg-7 col-md-7 col-sm-6 rel">
             	<span class="aro hidden-xs"></span>
 				<ul class="best-list">
-                	<li class="imga">Gift your employees the best rewards</li>
-                    <li class="imgb">Call us for your office catering</li>
-                    <li class="imgc">Or get the best deals for your employees</li>
+                	<li class="imga img1">						
+						Get Exclusive Deals for Employees
+					</li>
+                    <li class="imgb img2">Delight them with Gift Cards</li>
+                    <li class="imgc img3">Or Call Us for Office Catering</li>
 				</ul>
             </div>
 			<div class="col-lg-5 col-md-5 col-sm-6">
@@ -427,7 +429,7 @@ include_once('global_var.php');
         <div class="clearfix"></div> 
         <section>
         	<div class="form-bottom rel">
-        		<span class="happy-emp-img hidden-xs"><img src="media/images/form-bottom-img.png" class="img-responsive"></span>
+        		<span class="happy-emp-img hidden-xs"><img src="media/images/form-bottom-img_1.png" class="img-responsive"></span>
             	
             </div>
         	

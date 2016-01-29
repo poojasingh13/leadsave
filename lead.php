@@ -29,8 +29,8 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
 					$user->meet_held = $_REQUEST["meet_held"];
 					$user->send_email = $_REQUEST["send_email"];
 					$user->deal_closed = $_REQUEST["deal_closed"];					
-					$user->email_date = $_REQUEST["email_date"];
-					
+					$user->meet_held_date = $_REQUEST["meet_held_date"];
+							
 					$k = $user->updateUserStatus();
 					//echo $k;
 					$rtn['res']=$k;

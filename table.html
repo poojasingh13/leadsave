@@ -145,13 +145,14 @@
 							yesstatus = '';
 							
 						}else {
-							status = 'Yes';
+							status = 'Yes' + (data[12] != null ? ' | '+data[12] : '');
 							yesstatus = 'selected';
 							nostatus = '';
 						}
 						return '<span class="cls_userstatus">'+status+'</span> \
 							<span style="display:none" class="cls_userstatuslist"> \
-							<select class="cls_status cls_meet_held"><option value="0"' + nostatus + '>No</option><option value="1"' + yesstatus +'>Yes</option></select></span>';
+							<select class="cls_status cls_meet_held"><option value="0"' + nostatus + '>No</option><option value="1"' + yesstatus +'>Yes</option></select>\
+							<input placeholder="YYYY-MM-DD" style="margin-top:5px" id="datetimepicker" value="'+(data[12] != null ?  data[12] : '')+'" class="cls_meet_held_date" name="meet_held_date" type="text" ></span>';
 						} 
 					},
 					{ data: null, render: function ( data, type, row ) {
@@ -162,14 +163,14 @@
 							yesstatus = '';
 							
 						}else {
-							status = 'Yes' + (data[12] != null ? ' | '+data[12] : '');
+							status = 'Yes' ;
 							yesstatus = 'selected';
 							nostatus = '';
 						}
 						return '<span class="cls_userstatus">'+status+'</span> \
 							<span style="display:none" class="cls_userstatuslist"> \
-							<select class="cls_status cls_send_email"><option value="0"' + nostatus + '>No</option><option value="1"' + yesstatus +'>Yes</option></select>\
-							<input placeholder="YYYY-MM-DD" style="margin-top:5px" id="datetimepicker" value="'+(data[12] != null ?  data[12] : '')+'" class="cls_email_date" name="email_date" type="text" ></span>';
+							<select class="cls_status cls_send_email"><option value="0"' + nostatus + '>No</option><option value="1"' + yesstatus +'>Yes</option></select>';
+							
 						} 
 					},
 					{ data: null, render: function ( data, type, row ) {
@@ -219,8 +220,8 @@
 		$(document).on('click','.editor_update',function(){
 			var obj = $(this);
 			var userid = $(this).data('id');			
-			if(obj.closest('tr').find('.cls_send_email').val() == 1) {
-				if(obj.closest('tr').find('.cls_email_date').val() == '') {
+			if(obj.closest('tr').find('.cls_meet_held').val() == 1) {
+				if(obj.closest('tr').find('.cls_meet_held_date').val() == '') {
 					alert('Kindly enter date to continue');
 					return false;
 				}
@@ -229,7 +230,7 @@
 			  url: "lead.php",
 			  data: {'id':'update','userid':userid,'call1':obj.closest('tr').find('.cls_call1').val(),'call2':obj.closest('tr').find('.cls_call2').val()
 				,'meet_held':obj.closest('tr').find('.cls_meet_held').val(),'send_email':obj.closest('tr').find('.cls_send_email').val(),'deal_closed':obj.closest('tr').find('.cls_deal_closed').val()
-				,'email_date':obj.closest('tr').find('.cls_email_date').val()}
+				,'meet_held_date':obj.closest('tr').find('.cls_meet_held_date').val()}
 			}).done(function(r) {
 				if(r.res) {
 					$('#myModal').find('.modal-body').html('<p>Updated successfully</p>');

@@ -32,12 +32,12 @@ var $id,$email,$name,$mobile,$city,$status,$company;
 	
 	function updateUserStatus(){
 		global $conn;
-		if($this->send_email) {
-			$sql = "Update userinfo set call1 =".intval($this->call1).", call2 =".intval($this->call2).", meet_held =".intval($this->meet_held).", send_email =".intval($this->send_email).", email_date ='".$this->email_date."', deal_closed =".intval($this->deal_closed)." where id='".$this->id."'" ;
+		if($this->meet_held) {
+			$sql = "Update userinfo set call1 =".intval($this->call1).", call2 =".intval($this->call2).", meet_held =".intval($this->meet_held).", send_email =".intval($this->send_email).", meet_held_date ='".$this->meet_held_date."', deal_closed =".intval($this->deal_closed)." where id='".$this->id."'" ;
 		} else {
-			$sql = "Update userinfo set call1 =".intval($this->call1).", call2 =".intval($this->call2).", meet_held =".intval($this->meet_held).", send_email =".intval($this->send_email).", deal_closed =".intval($this->deal_closed)." where id='".$this->id."'" ;
+			$sql = "Update userinfo set call1 =".intval($this->call1).", call2 =".intval($this->call2).", meet_held =".intval($this->meet_held).", meet_held_date =null, send_email =".intval($this->send_email).", deal_closed =".intval($this->deal_closed)." where id='".$this->id."'" ;
 		}	
-		//return $sql;
+		
 		$res = $conn->prepare($sql);
 		return $res->execute();
 	}

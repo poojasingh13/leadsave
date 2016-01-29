@@ -46,7 +46,7 @@ array( 'db' => 'call2',     'dt' => 8),
 array( 'db' => 'meet_held',     'dt' => 9 ),
 array( 'db' => 'send_email',     'dt' => 10 ),
 array( 'db' => 'deal_closed',     'dt' => 11 ),
-array( 'db' => 'email_date',     'dt' => 12 ),		
+array( 'db' => 'meet_held_date',     'dt' => 12 ),		
 	/*,
 	array(
 		'db'        => 'salary',

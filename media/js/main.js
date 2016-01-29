@@ -106,7 +106,7 @@ $(document).ready(function(){
 		},
 		onClick:function(obj) {			
 			obj.inp.valid();
-			//obj.inp.closest('div').find('.placeholder').addClass('.selectedtext');
+			
 		}
 	});
 });
