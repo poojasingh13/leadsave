@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /*
  * DataTables example server-side processing script.
  *
@@ -67,6 +67,12 @@ include ('db_connection.php');
 
 require( 'ssp.class.php' );
 $where = "active = 1";
+//print_r($_SESSION);
+if($_SESSION["city"] != ''){
+	$where .= ' and city ="'. print_r($_SESSION["city"],true).'"';
+}
+//echo $where;
+
 echo json_encode(
 	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns, $where )
 );

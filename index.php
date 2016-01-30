@@ -65,8 +65,11 @@ include_once('global_var.php');
 							<div>							
 								<select class="form-control" name="city" id="id_CandidateLocation">
 								   <option value="">- Select City -</option>
-								   <optgroup label="Top Cities">
-									  <option>Bangalore</option>
+								   <option>Bengaluru</option>
+								     <option>Hyderabad</option>
+								</select>	 
+								   <!--<optgroup label="Top Cities">
+									  <option>Bengaluru</option>
 									  <option>Chennai</option>
 									  <option>Delhi</option>
 									  <option>Gurgaon</option>
@@ -412,7 +415,7 @@ include_once('global_var.php');
 									  <option >Siliguri</option>
 									  <option >Other West Bengal</option>
 								   </optgroup>
-								</select>
+								</select>-->
 							</div>	
 						  </div>
 						  <div class="form-group marginBottom-0">

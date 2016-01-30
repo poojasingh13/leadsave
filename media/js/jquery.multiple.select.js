@@ -691,7 +691,7 @@
         multiple: false,
         multipleWidth: 80,
         single: false,
-        filter: true,
+        filter: false,
         width: '100%',
         maxHeight: 200,
         container: null,

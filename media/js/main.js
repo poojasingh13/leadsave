@@ -93,7 +93,7 @@ $('.userform').validate({
 
 $(document).ready(function(){
 	$('#id_CandidateLocation').multipleSelect({
-		filter:true,
+		filter:false,
 		single:true,
 		hideOptCheckboxes:false,
 		selectAll:false,

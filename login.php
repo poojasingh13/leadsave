@@ -1,10 +1,19 @@
 <?php
 include_once('global_var.php');
 $_error='';
+
+
 if($_SERVER["REQUEST_METHOD"] == "POST")
  { 
-    if((!strcasecmp($_REQUEST["txtUserName"],"KFCSales01") && !strcasecmp($_REQUEST["txtUserPass"],"Sales01")) || (!strcasecmp($_REQUEST["txtUserName"],"KFCSales02") && !strcasecmp($_REQUEST["txtUserPass"],"Sales02")) || (!strcasecmp($_REQUEST["txtUserName"],"KFCSales03") && !strcasecmp($_REQUEST["txtUserPass"],"Sales03")) || (!strcasecmp($_REQUEST["txtUserName"],"KFCSales04") && !strcasecmp($_REQUEST["txtUserPass"],"Sales04")) || (!strcasecmp($_REQUEST["txtUserName"],"KFCSales05") && !strcasecmp($_REQUEST["txtUserPass"],"Sales05"))) {
+    if((!strcasecmp($_REQUEST["txtUserName"],"KFCSales01") && !strcasecmp($_REQUEST["txtUserPass"],"Sales1_Bengaluru")) || (!strcasecmp($_REQUEST["txtUserName"],"KFCSales02") && !strcasecmp($_REQUEST["txtUserPass"],"Sales2_Bengaluru")) || (!strcasecmp($_REQUEST["txtUserName"],"KFCSales03") && !strcasecmp($_REQUEST["txtUserPass"],"Hyderabad_Sales03")) || (!strcasecmp($_REQUEST["txtUserName"],"KFCSales04") && !strcasecmp($_REQUEST["txtUserPass"],"Hyderabad_Sales04")) || (!strcasecmp($_REQUEST["txtUserName"],"KFCSales05") && !strcasecmp($_REQUEST["txtUserPass"],"Password_Sales05"))) {
 		$_SESSION["login"]=true;
+		if((!strcasecmp($_REQUEST["txtUserName"],"KFCSales01")) || (!strcasecmp($_REQUEST["txtUserName"],"KFCSales02"))) {
+			$_SESSION["city"]='Bengaluru';			
+		} else if((!strcasecmp($_REQUEST["txtUserName"],"KFCSales03")) || (!strcasecmp($_REQUEST["txtUserName"],"KFCSales04"))) {
+			$_SESSION["city"]='Hyderabad';			
+		} 
+		$_SESSION["userid"]=$_REQUEST["txtUserName"];			
+				
 		header("Location: ".$GLOBALS['url']."table.php"); /* Redirect browser */
 		die();
 	} else {

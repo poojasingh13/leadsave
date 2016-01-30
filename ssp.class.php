@@ -184,6 +184,8 @@ class SSP {
 		$order = self::order( $request, $columns );
 		$where = self::filter( $request, $columns, $bindings,$default );
 		// Main query to actually get the data
+		
+		
 		$data = self::sql_exec( $db, $bindings,
 			"SELECT SQL_CALC_FOUND_ROWS `".implode("`, `", self::pluck($columns, 'db'))."`
 			 FROM `$table`
@@ -191,6 +193,9 @@ class SSP {
 			 $order
 			 $limit"
 		);
+		
+		
+		
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db,
 			"SELECT FOUND_ROWS()"

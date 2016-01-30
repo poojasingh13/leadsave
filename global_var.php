@@ -11,5 +11,6 @@ $bpc=3;
 
 if(!isset($_SESSION["login"])){
 	$_SESSION["login"]=false;
+	$_SESSION["city"]='';
 }
 ?>
