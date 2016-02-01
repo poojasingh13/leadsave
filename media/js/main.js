@@ -31,10 +31,14 @@ $('.userform').validate({
 		  email: "Your email address must be in the format of name@domain.com"
 		},
 		mobile: {
-		  required: "Please enter your Company name",			
+		  required: "Please enter your Mobile no",			
 			minlength:"Min 10 number",			
 		},
+		company: {
+		  required: "Please enter your Company name"
+		},
 		city:{
+		required: "Please select your city",	
 		"notNull":'Please select your city'
 		}
 		
@@ -69,7 +73,7 @@ $('.userform').validate({
 		}
 	},
 	errorPlacement: function(error,element){
-		//error.appendTo(element.parent());
+		error.appendTo(element.closest('li'));
 	},
 	submitHandler: function(form) {
 		$.ajax({
@@ -121,4 +125,16 @@ $(document).ready(function(){
         return !1;
     }
 	
+	stringOnly = function(evt){
+		var evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ((charCode > 47 && charCode < 58)){
+            evt.preventDefault();
+			return 0;
+        }
+		
+        return 1;
+    }
+	
 	document.getElementById("mobile").addEventListener("keypress", numericOnly, false);
+	document.getElementById("name").addEventListener("keypress", stringOnly, false);

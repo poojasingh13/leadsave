@@ -346,7 +346,7 @@ div.column_half {
 
 .logoInside {width:50%; margin:0 0 40px 0;}
 .heading { color:#c21330; font-size:35px; }
-.container{ background:url(../images/bg.png) repeat;}
+.container{ background:url(../images/bg.jpg) repeat;}
 
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover { background:#c21330; border:solid 1px #c21330;}
@@ -485,10 +485,10 @@ div.column_half {
     color: #999;
 }
 
-.form-wrap .input-group {
+/*.form-wrap .input-group {
 	margin-bottom:12px;
 }
-
+*/
 
 .btn-register {
 	border-radius:30px;
@@ -614,7 +614,18 @@ footer {
     margin: -80px 10px 10px 422px;
     width: 250px;
 }
-
+#LeadSave ul{
+	padding-left:0px;
+}
+#LeadSave ul li .error{
+	padding:0px;
+	font-weight:300;
+	font-size:14px;
+}
+#LeadSave ul li{
+	list-style:none;
+	margin-bottom:15px;
+}
 
 @media only screen and (max-width : 979px) {
 	
