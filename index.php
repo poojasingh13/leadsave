@@ -20,7 +20,7 @@ include_once('global_var.php');
 		<header>
         	<div class="col-lg-9 col-md-9">
             	<p><img src="media/images/kfc_treat_1.png" class="img-responsive"></p>
-                <p><img src="media/images/get-kfc.png" class="img-responsive"></p>
+                <p><img src="media/images/get-kfc_new.png" class="img-responsive"></p>
             </div>
             
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
